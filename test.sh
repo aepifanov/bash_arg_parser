@@ -18,9 +18,8 @@ CONF='
        }
     }'
 
-ARGS=${@}
 
-arg_parser "${CONF}" "${ARGS}"
+arg_parser "${CONF}" "$*" ${PWD}
 
 echo ${name}
 echo ${option}
