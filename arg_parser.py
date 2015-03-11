@@ -35,10 +35,12 @@ def create_stropt(tmpl):
     for var in tmpl:
         val = tmpl[var]
 
-        OPTS.append(cfg.StrOpt(val["name"],
-                               required=True,
-                               default=val["default"],
-                               help=val["help"]))
+        OPTS.append(cfg.StrOpt(
+            val["name"],
+            short=val["short"],
+            required=True,
+            default=val["default"],
+            help=val["help"] + " ( Default: '" + val["default"] + "' )"))
 
 
 def write_values(tmpl, name):
