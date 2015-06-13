@@ -1,6 +1,8 @@
 #!/bin/bash
 
-source arg_parser.sh
+TOPDIR=$(dirname "$0")
+
+source "$TOPDIR/arg_parser.sh"
 
 CONF='
     {
@@ -19,7 +21,18 @@ CONF='
     }'
 
 
-arg_parser "${CONF}" "$*" ${PWD}
+WORKDIR="${TOPDIR}"
+arg_parser "${CONF}" "$*"
 
-echo ${name}
-echo ${option}
+echo "name   = ${name}"
+echo "option = ${option}"
+
+
+# > ./test --name testname
+# name   = testname
+# option = default_o
+
+
+# > ./test --name testname -o test_o
+# name   = testname
+# option = test_o
